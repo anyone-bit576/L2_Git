@@ -1,0 +1,8 @@
+function expandedForm(num) {
+  return num
+  .toString()
+  .split('')
+  .map((digit,i,arr)=>digit==='0'? 0: digit * 10**(arr.length - i - 1))
+  .filter(num=>num!==0)
+  .join(' + ');
+}

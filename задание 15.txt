@@ -1,0 +1,24 @@
+function howManyTimes(time1, time2) {
+  const start = Date.parse(time1.replace(" ", "T") + "Z") / 1000;
+  const end = Date.parse(time2.replace(" ", "T") + "Z") / 1000;
+
+  let total = 0;
+
+  for (let t = start; t < end; t++) {
+    const date = new Date(t * 1000);
+    const h = date.getUTCHours();
+    const m = date.getUTCMinutes();
+    const s = date.getUTCSeconds();
+
+    if (m === 0 && s < 12) {
+      const hour = h % 12 || 12;
+      if (s < hour) total++;
+    }
+
+    if (m === 30 && s === 0) {
+      total++;
+    }
+  }
+
+  return total;
+}

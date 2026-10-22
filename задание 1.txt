@@ -1,0 +1,22 @@
+
+function hasTwoCubeSums(n) {
+  for (let a = 1; a ** 3 < n; a++) {
+    for (let b = a + 1; a ** 3 + b ** 3 <= n; b++) {
+      if (a ** 3 + b ** 3 === n) {
+        for (let c = 1; c ** 3 < n; c++) {
+          for (let d = c + 1; c ** 3 + d ** 3 <= n; d++) {
+            if (
+              c ** 3 + d ** 3 === n &&
+              a !== c && a !== d &&
+              b !== c && b !== d
+            ) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return false;
+}

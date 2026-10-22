@@ -1,0 +1,6 @@
+function longest(arr, n) {
+ const sorted = arr
+ .map((str,index)=>({str,index}))
+ .sort((a,b)=>b.str.length - a.str.length || a.index - b.index);
+  return sorted[n-1].str;
+}

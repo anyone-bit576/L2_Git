@@ -1,0 +1,15 @@
+function cache(func) {
+  const saved = new Map();
+  
+  return function(...args){
+    const key = JSON.stringify(args);
+    
+    if(saved.has(key)){
+      return saved.get(key);
+    }
+    const result = func.apply(this,args);
+    saved.set(key,result);
+    
+    return result;
+  };
+}
